@@ -67,8 +67,6 @@ export const signUp =
 
       Cookies.set("access_token", accessToken, cookieOptions);
 
-      console.log("accessToken", accessToken);
-
       const userResponse = await axiosInterceptorInstance.get(
         "/users/currentUser"
       );

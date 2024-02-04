@@ -20,6 +20,11 @@ export interface Station {
   numberOfPlatforms: number;
 }
 
+export interface Train {
+  id: number;
+  name: string;
+  color: string;
+}
 export interface SignInInput {
   email: string;
   password: string;

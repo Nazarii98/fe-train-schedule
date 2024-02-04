@@ -1,19 +1,18 @@
 import { AppThunk } from "@/store/store";
 import axiosInterceptorInstance from "../axiosInterceptorInstance";
-import { setLoading, setStations } from "@/store/reducers/stationsSlice";
-import { Pagination } from "@/utils/types";
-import { parse } from "path";
+import { setLoading } from "@/store/reducers/stationsSlice";
+import { setTrains } from "@/store/reducers/trainsSlice";
 
-export const fetchStations =
+export const fetchTrains =
   (pagination: any): AppThunk =>
   async (dispatch) => {
     try {
       dispatch(setLoading(true));
-      const response = await axiosInterceptorInstance.get("/stations/all", {
+      const response = await axiosInterceptorInstance.get("/trains/all", {
         params: { ...pagination },
       });
-      const stations = response.data.data;
-      dispatch(setStations(stations));
+      const trains = response.data.data;
+      dispatch(setTrains(trains));
     } catch (err) {
       console.error(`Error logout: ${err}`);
     } finally {

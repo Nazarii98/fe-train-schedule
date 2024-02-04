@@ -17,6 +17,7 @@ axiosInterceptorInstance.interceptors.request.use(
     } else {
       localStorage.clear();
     }
+
     return config;
   },
   (error) => {

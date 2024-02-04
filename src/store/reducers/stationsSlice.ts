@@ -21,7 +21,7 @@ export const stationsSlice = createSlice({
     clearStations: (state) => {
       state.stations = null;
     },
-    updateUserInformation: (state, action) => {
+    updateStations: (state, action) => {
       state.stations = { ...state.stations, ...action.payload };
     },
     setLoading: (state, action) => {
@@ -32,7 +32,7 @@ export const stationsSlice = createSlice({
 
 const { actions, reducer } = stationsSlice;
 
-export const { setStations, clearStations, updateUserInformation, setLoading } =
+export const { setStations, clearStations, updateStations, setLoading } =
   actions;
 
 export default reducer;

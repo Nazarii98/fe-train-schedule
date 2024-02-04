@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { Station } from "@/utils/types";
-import Image from "next/image";
 import { FC, useState } from "react";
 
 interface Props {
@@ -15,9 +14,6 @@ export const StationsItem: FC<Props> = ({ station }) => {
     } else {
       setImgHref(station.image);
     }
-  };
-  const handleCloseImage = () => {
-    setImgHref("");
   };
 
   return (

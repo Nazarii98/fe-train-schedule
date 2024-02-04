@@ -2,11 +2,11 @@
 
 import { useTypedDispatch } from "@/store/store";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { sign } from "crypto";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { signUp } from "../actions/auth";
 import { SignUpInput } from "@/utils/types";
+import { useRouter } from "next/navigation";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is required"),
@@ -28,10 +28,16 @@ const Registration = () => {
   });
 
   const dispatch = useTypedDispatch();
+  const router = useRouter();
 
-  const onSubmit = (data: SignUpInput) => {
+  const onSubmit = async (data: SignUpInput) => {
     console.log("Registration submitted:", data);
-    dispatch(signUp(data));
+    const user = await dispatch(signUp(data));
+    if (user.role === "user") {
+      router.push("/aboutUser");
+    } else if (user.role === "admin") {
+      router.push("/aboutAdmin");
+    }
   };
 
   return (

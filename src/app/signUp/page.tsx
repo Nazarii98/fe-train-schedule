@@ -1,8 +1,12 @@
 "use client";
 
+import { useTypedDispatch } from "@/store/store";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { sign } from "crypto";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { signUp } from "../actions/auth";
+import { SignUpInput } from "@/utils/types";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is required"),
@@ -23,8 +27,11 @@ const Registration = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
+  const dispatch = useTypedDispatch();
+
+  const onSubmit = (data: SignUpInput) => {
     console.log("Registration submitted:", data);
+    dispatch(signUp(data));
   };
 
   return (

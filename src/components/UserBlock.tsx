@@ -5,17 +5,15 @@ import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import Link from "next/link";
 
 export const UserBlock = () => {
-  const isUser = useTypedSelector((state) => state.user.isAuthorized);
-  const user = useTypedSelector((state) => state.user.user);
   const dispatch = useTypedDispatch();
-
+  const user = useTypedSelector((state) => state.user.user);
   const userName = `${user?.firstName} ${user?.lastName}`;
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
-  return isUser ? (
+  return user ? (
     <div className="flex flex-row gap-10 self-center text-2xl ">
       <h2 className="text-orange-600">Wellcome {userName}</h2>
       <button

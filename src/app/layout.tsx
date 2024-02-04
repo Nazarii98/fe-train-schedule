@@ -22,6 +22,13 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} h-full p-10`}>
         <div className="flex flex-col h-full gap-10">
+          <Image
+            src="/images/mainImage.jpg"
+            alt="Main BG"
+            className="absolute inset-0 z-[-10] object-cover w-full h-full"
+            width={1088}
+            height={608}
+          />
           <ReduxProvider>
             <Header />
             <Main>{children}</Main>

@@ -4,7 +4,14 @@ export interface NavbarTab {
 }
 
 export interface User {
+  id: number;
   email: string;
   firstName: string;
-  secondName: string;
+  lastName: string;
+  role: string;
 }
+
+export type SignInInput = {
+  email: string;
+  password: string;
+};

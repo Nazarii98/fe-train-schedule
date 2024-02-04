@@ -1,9 +1,12 @@
 "use client";
 
-import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useTypedDispatch } from "@/store/store";
+import { login } from "../actions/auth";
+import { SignInInput } from "@/utils/types";
+import { useRouter } from "next/navigation";
 
 const schema = yup.object().shape({
   email: yup
@@ -22,8 +25,16 @@ const SignIn = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log("Login submitted:", data);
+  const router = useRouter();
+  const dispatch = useTypedDispatch();
+
+  const onSubmit = async (data: SignInInput) => {
+    const user = await dispatch(login(data));
+    if (user.role === "user") {
+      router.push("/aboutUser");
+    } else if (user.role === "admin") {
+      router.push("/aboutAdmin");
+    }
   };
 
   return (

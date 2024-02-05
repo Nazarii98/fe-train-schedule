@@ -25,6 +25,16 @@ export interface Train {
   name: string;
   color: string;
 }
+
+export interface Schedule {
+  id: number;
+  departureDate: string;
+  departureStationId: number;
+  arrivalDate: string;
+  arrivalStationId: number;
+  trainId: number;
+}
+
 export interface SignInInput {
   email: string;
   password: string;

@@ -23,7 +23,7 @@ export const StationsItem: FC<Props> = ({ station }) => {
         className="grid grid-flow-col grid-cols-9 hover:bg-orange-600 p-2 px-20 cursor-pointer"
       >
         <div className="col-start-1 col-end-2">{station.id}</div>
-        <div className="col-start-2 col-end-4">{station.name}</div>
+        <div className="col-start-2 */col-end-4">{station.name}</div>
         <div className="col-start-4 col-end-6">{station.city}</div>
         <div className="col-start-6 col-end-8">{station.oblast}</div>
         <div className="col-start-8 col-end-10 text-center">

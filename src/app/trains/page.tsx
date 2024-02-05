@@ -4,6 +4,7 @@ import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { useEffect, useState } from "react";
 import { fetchTrains } from "../actions/trains";
 import { TrainsList } from "./components/trainsList";
+import { Watch } from "react-loader-spinner";
 
 const Stations = () => {
   const trains = useTypedSelector((state) => state.trains);
@@ -28,11 +29,22 @@ const Stations = () => {
     dispatch(fetchTrains(pagination));
   }, [dispatch, orderDirection, searchValue, page, searchField, orderField]);
   return (
-    <>
-      <div className="flex flex-1 flex-col justify-start rounded-3xl bg-gray-800 bg-opacity-90 border-white border-2  overflow-y-auto">
-        {trains.trains && <TrainsList trains={trains.trains} />}
-      </div>
-    </>
+    <div className="flex flex-1 flex-col justify-start rounded-3xl bg-gray-800 bg-opacity-90 border-white border-2  overflow-y-auto">
+      {trains.isLoading || !trains.trains ? (
+        <div className="m-auto">
+          <Watch
+            visible={true}
+            height="100%"
+            width="160"
+            radius="48"
+            color="#c74822"
+            ariaLabel="watch-loading"
+          />
+        </div>
+      ) : (
+        <TrainsList trains={trains.trains} />
+      )}
+    </div>
   );
 };
 

@@ -8,33 +8,19 @@ import { useEffect, useState } from "react";
 
 export const UserBlock = () => {
   const dispatch = useTypedDispatch();
-  const user = useTypedSelector((state) => state.user.user);
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
-  const role = localStorage.getItem("role");
-  const [isAuth, setIsAuth] = useState(!!firstName);
+  const user = useTypedSelector((state) => state.user);
 
-  const userNameFromLocalStorage = `${firstName} ${lastName}`;
-  const userNameFromRedax = `${user?.firstName} ${user?.lastName}`;
-  const userName = user ? userNameFromRedax : userNameFromLocalStorage;
+  const userName = `${user.user?.firstName} ${user.user?.lastName}`;
+
   const handleLogout = () => {
     dispatch(logout());
-    setIsAuth(false);
   };
 
-  useEffect(() => {
-    if (user || firstName) {
-      setIsAuth(true);
-    } else {
-      setIsAuth(false);
-    }
-  }, [user, firstName]);
-
-  return isAuth ? (
+  return user.isAuthorized ? (
     <div className="flex flex-row gap-10 self-center text-2xl ">
       <h2 className="text-orange-600">
-        Wellcome <strong>{userName}</strong> you have <strong>{role}</strong>{" "}
-        role
+        Wellcome <strong>{userName}</strong> you have{" "}
+        <strong>{user.user?.role}</strong> role
       </h2>
       <button
         onClick={handleLogout}

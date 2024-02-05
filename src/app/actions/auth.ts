@@ -37,10 +37,6 @@ export const login =
 
       const user = userResponse.data;
 
-      for (let key in user) {
-        localStorage.setItem(key, user[key]);
-      }
-
       dispatch(loginUser(user));
       return user;
     } catch (err) {
@@ -72,10 +68,6 @@ export const signUp =
       );
 
       const user = userResponse.data;
-
-      for (let key in user) {
-        localStorage.setItem(key, user[key]);
-      }
 
       dispatch(loginUser(user));
       return user;

@@ -1,5 +1,7 @@
 "use client";
 
+import { Audio, Watch } from "react-loader-spinner";
+
 import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { useEffect, useState } from "react";
 import { fetchStations } from "../actions/stations";
@@ -31,7 +33,20 @@ const Stations = () => {
   return (
     <>
       <div className="flex flex-1 flex-col justify-start rounded-3xl bg-gray-800 bg-opacity-90 border-white border-2  overflow-y-auto">
-        {stations.stations && <StationsList stations={stations.stations} />}
+        {stations.isLoading || !stations.stations ? (
+          <div className="m-auto">
+            <Watch
+              visible={true}
+              height="100%"
+              width="160"
+              radius="48"
+              color="#c74822"
+              ariaLabel="watch-loading"
+            />
+          </div>
+        ) : (
+          <StationsList stations={stations.stations} />
+        )}
       </div>
     </>
   );

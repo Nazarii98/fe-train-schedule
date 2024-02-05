@@ -39,3 +39,14 @@ export interface Pagination {
   take: number;
   skip: number;
 }
+
+export interface IPagination {
+  pageCount: number;
+  forcePage: number;
+  type?: string;
+  onPageChange: (num: number) => void;
+}
+
+export interface IHandlePage {
+  selected: number;
+}

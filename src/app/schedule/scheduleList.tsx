@@ -8,23 +8,11 @@ import { ImPlus } from "react-icons/im";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { createScheduleItem } from "../actions/schedule";
 import { DateTimePicker } from "@mui/x-date-pickers";
+import { FormInputs, SelectValues } from "./types/types";
 
 interface Props {
   schedule: Schedule[];
   onSetSort: (value: string) => void;
-}
-
-interface FormInputs {
-  departureDate: string;
-  arrivalDate: string;
-  trainId: SelectValues;
-  departureStation: SelectValues;
-  arrivalStation: SelectValues;
-}
-
-interface SelectValues {
-  value: string;
-  label: string;
 }
 
 export const ScheduleList: FC<Props> = ({ schedule, onSetSort }) => {
@@ -190,7 +178,14 @@ export const ScheduleList: FC<Props> = ({ schedule, onSetSort }) => {
         </form>
       ) : (
         schedule.map((scheduleItem, index) => {
-          return <ScheduleItem key={index} schedule={scheduleItem} />;
+          return (
+            <ScheduleItem
+              stationsSelectData={stationsSelectData}
+              trainsSelectData={trainsSelectData}
+              key={index}
+              schedule={scheduleItem}
+            />
+          );
         })
       )}
     </div>

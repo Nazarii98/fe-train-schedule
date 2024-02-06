@@ -1,4 +1,6 @@
+import { FormInputs } from "@/app/schedule/types/types";
 import { FC } from "react";
+import { UseFormHandleSubmit } from "react-hook-form";
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { MdDelete, MdEdit } from "react-icons/md";
@@ -7,7 +9,7 @@ interface Props {
   isEditing: boolean;
   onOpenEdit: () => void;
   onCloseEdit: () => void;
-  onSubmit: () => void;
+  onSubmit: any;
   onDelete: () => void;
 }
 

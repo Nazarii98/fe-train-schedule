@@ -64,3 +64,22 @@ export const createScheduleItem =
       dispatch(setLoading(false));
     }
   };
+
+export const uppdateScheduleItem =
+  (newSchedule: Schedule): AppThunk =>
+  async (dispatch) => {
+    try {
+      dispatch(setLoading(true));
+
+      const response = await axiosInterceptorInstance.put(
+        "/schedule/update",
+        newSchedule
+      );
+
+      dispatch(fetchSchedule({}));
+    } catch (err) {
+      console.error(`Error creating schedule item: ${err}`);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };

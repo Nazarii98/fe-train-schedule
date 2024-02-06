@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Watch } from "react-loader-spinner";
 import { fetchSchedule } from "./actions/schedule";
 import { ScheduleList } from "./schedule/scheduleList";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function Home() {
   const schedule = useTypedSelector((state) => state.schedule);
@@ -30,7 +32,16 @@ export default function Home() {
     dispatch(fetchSchedule(pagination));
   }, [dispatch, orderDirection, searchValue, page, searchField, orderField]);
 
-  console.log(schedule.schedule);
+  const handleSetSortBy = (value: string) => {
+    if (value === orderField) {
+      orderDirection === "asc"
+        ? setOrderDirection("desc")
+        : setOrderDirection("asc");
+    } else {
+      setOrderField(value);
+      setOrderDirection("desc");
+    }
+  };
 
   return (
     <div className="flex flex-1 flex-col justify-start rounded-3xl bg-gray-800 bg-opacity-90 border-white border-2  overflow-y-auto">
@@ -46,7 +57,12 @@ export default function Home() {
           />
         </div>
       ) : (
-        <ScheduleList schedule={schedule.schedule} />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <ScheduleList
+            onSetSort={handleSetSortBy}
+            schedule={schedule.schedule}
+          />
+        </LocalizationProvider>
       )}
     </div>
   );

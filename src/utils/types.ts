@@ -27,7 +27,7 @@ export interface Train {
 }
 
 export interface Schedule {
-  id: number;
+  id?: number;
   departureDate: string;
   departureStationId: number;
   arrivalDate: string;

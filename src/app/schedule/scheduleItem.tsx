@@ -13,6 +13,8 @@ interface Props {
 
 export const ScheduleItem: FC<Props> = ({ schedule }) => {
   const stations = useTypedSelector((state) => state.stations.stations);
+  const userRole = useTypedSelector((state) => state.user.user?.role);
+
   const dispatch = useTypedDispatch();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -32,36 +34,38 @@ export const ScheduleItem: FC<Props> = ({ schedule }) => {
   const handleSubmit = () => {};
 
   const handleDelete = () => {
-    dispatch(deleteSchedule(schedule.id));
+    if (schedule.id) dispatch(deleteSchedule(schedule.id));
   };
 
   return (
-    <div className="relative grid grid-flow-col grid-cols-10 hover:bg-orange-600 p-2 px-20">
+    <div className="relative grid grid-flow-col grid-cols-10 hover:bg-orange-600 p-2 pr-20 pl-10">
       <div className="col-start-1 col-end-2">{schedule.id}</div>
       <div className="col-start-2 col-end-4">
-        {stationName(schedule.arrivalStationId)}
-      </div>
-      <div className="col-start-4 col-end-6">
-        {formatDateString(schedule.arrivalDate)}
-      </div>
-      <div className="col-start-6 col-end-8">
         {stationName(schedule.departureStationId)}
       </div>
-      <div className="col-start-8 col-end-10 text-center">
+      <div className="col-start-4 col-end-6 text-center">
         {formatDateString(schedule.departureDate)}
+      </div>
+      <div className="col-start-6 col-end-8 text-center">
+        {stationName(schedule.arrivalStationId)}
+      </div>
+      <div className="col-start-8 col-end-10 text-center">
+        {formatDateString(schedule.arrivalDate)}
       </div>
       <div className="col-start-10 col-end-11 text-center">
         {schedule.trainId}
       </div>
-      <div className="absolute right-4 top-3">
-        <EditBlock
-          isEditing={isEditing}
-          onOpenEdit={handleOpenEdit}
-          onCloseEdit={handleCloseEdit}
-          onSubmit={handleSubmit}
-          onDelete={handleDelete}
-        />
-      </div>
+      {userRole === "admin" && (
+        <div className="absolute right-4 top-3">
+          <EditBlock
+            isEditing={isEditing}
+            onOpenEdit={handleOpenEdit}
+            onCloseEdit={handleCloseEdit}
+            onSubmit={handleSubmit}
+            onDelete={handleDelete}
+          />
+        </div>
+      )}
     </div>
   );
 };

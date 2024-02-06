@@ -31,10 +31,10 @@ export const EditBlock: FC<Props> = ({
         </>
       ) : (
         <>
-          <button onClick={onOpenEdit} className="hover:text-yellow-400">
+          <button onClick={onOpenEdit} className="hover:text-black">
             <MdEdit />
           </button>
-          <button onClick={onDelete} className="hover:text-red-400">
+          <button onClick={onDelete} className="hover:text-black">
             <MdDelete />
           </button>
         </>

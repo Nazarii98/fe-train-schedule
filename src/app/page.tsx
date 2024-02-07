@@ -7,6 +7,8 @@ import { fetchSchedule } from "../actions/schedule";
 import { ScheduleList } from "./schedule/scheduleList";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { fetchStations } from "@/actions/stations";
+import { fetchTrains } from "@/actions/trains";
 
 export default function Home() {
   const schedule = useTypedSelector((state) => state.schedule);
@@ -31,6 +33,11 @@ export default function Home() {
     };
     dispatch(fetchSchedule(pagination));
   }, [dispatch, orderDirection, searchValue, page, searchField, orderField]);
+
+  useEffect(() => {
+    dispatch(fetchStations({}));
+    dispatch(fetchTrains({}));
+  }, [dispatch]);
 
   const handleSetSortBy = (value: string) => {
     if (value === orderField) {

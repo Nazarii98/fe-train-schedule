@@ -5,7 +5,7 @@ import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { formatDateString } from "@/utils/functions";
 import { Schedule } from "@/utils/types";
 import { FC, useState } from "react";
-import { deleteSchedule, uppdateScheduleItem } from "../actions/schedule";
+import { deleteSchedule, uppdateScheduleItem } from "../../actions/schedule";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import Select from "react-select";

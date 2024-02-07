@@ -1,7 +1,7 @@
 "use client";
 
 import { MdExitToApp } from "react-icons/md";
-import { logout } from "@/app/actions/auth";
+import { logout } from "@/actions/auth";
 import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import Link from "next/link";
 import { useEffect, useState } from "react";

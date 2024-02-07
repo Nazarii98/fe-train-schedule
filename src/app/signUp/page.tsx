@@ -4,7 +4,7 @@ import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { signUp } from "../actions/auth";
+import { signUp } from "../../actions/auth";
 import { SignUpInput } from "@/utils/types";
 import { useRouter } from "next/navigation";
 import { Watch } from "react-loader-spinner";

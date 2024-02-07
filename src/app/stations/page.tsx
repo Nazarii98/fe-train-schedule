@@ -4,7 +4,7 @@ import { Audio, Watch } from "react-loader-spinner";
 
 import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { useEffect, useState } from "react";
-import { fetchStations } from "../actions/stations";
+import { fetchStations } from "../../actions/stations";
 import { StationsList } from "./components/stationsList";
 
 const Stations = () => {

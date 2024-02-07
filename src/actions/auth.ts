@@ -2,7 +2,7 @@ import { loginUser, logoutUser, setLoading } from "@/store/reducers/userSlice";
 import { AppThunk } from "@/store/store";
 import { SignInInput, SignUpInput } from "@/utils/types";
 import Cookies from "js-cookie";
-import axiosInterceptorInstance from "../axiosInterceptorInstance";
+import axiosInterceptorInstance from "../utils/axiosInterceptorInstance";
 
 export const logout = (): AppThunk => async (dispatch) => {
   try {

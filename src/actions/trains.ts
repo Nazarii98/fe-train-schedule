@@ -1,5 +1,5 @@
 import { AppThunk } from "@/store/store";
-import axiosInterceptorInstance from "../axiosInterceptorInstance";
+import axiosInterceptorInstance from "../utils/axiosInterceptorInstance";
 import { setLoading } from "@/store/reducers/stationsSlice";
 import { setTrains } from "@/store/reducers/trainsSlice";
 

@@ -2,7 +2,7 @@
 
 import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { useEffect, useState } from "react";
-import { fetchTrains } from "../actions/trains";
+import { fetchTrains } from "../../actions/trains";
 import { TrainsList } from "./components/trainsList";
 import { Watch } from "react-loader-spinner";
 

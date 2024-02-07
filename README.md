@@ -1,28 +1,52 @@
+# Train Schedule
+
+Train Schedule is a web application for viewing train schedules. Users can browse available routes, departure and arrival times, and select options as needed.
+
+## Overview
+
+Train Schedule allows users to conveniently view train schedules and manage them. Key features include:
+
+- Viewing available routes and departure/arrival times.
+- User authentication and authorization.
+- Different user roles with corresponding permissions:
+  - **User**: Can view schedules of other trains.
+  - **Administrator**: Can add, delete, and edit train schedules.
+
+## Technologies
+
+- **Frontend**: Next.js, React, Redux, TypeScript, Axios
+- **Backend**: Nest.js, Prisma, PostgreSQL
+- **Authentication**: JWT
+
+## Demo
+
+Check out the [DEMO LINK](https://fe-train-schedule.vercel.app/) to see the application in action.
+
+## Backend Repository
+
+- [Backend Repository](https://github.com/Nazarii98/be-train-schedule)
+
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow these steps:
 
-yarn <=== for install packages
+### Installation
 
-yarn dev <=== for run server
+Make sure you have Node.js installed on your machine. Then, clone the repository and navigate to the project directory:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+git clone https://github.com/username/project.git
+cd project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install the dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+yarn
 
-## Learn More
+### Running the Development Server
 
-To learn more about Next.js, take a look at the following resources:
+Ask the project owner about the env file 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+yarn dev
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open http://localhost:3000 with your browser to see the result.

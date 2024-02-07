@@ -6,7 +6,7 @@ import Select from "react-select";
 
 import { ImPlus } from "react-icons/im";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { createScheduleItem } from "../actions/schedule";
+import { createScheduleItem } from "../../actions/schedule";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { FormInputs, SelectValues } from "./types/types";
 

@@ -1,5 +1,5 @@
 import { AppThunk } from "@/store/store";
-import axiosInterceptorInstance from "../axiosInterceptorInstance";
+import axiosInterceptorInstance from "../utils/axiosInterceptorInstance";
 import {
   deleteScheduleItem,
   setLoading,

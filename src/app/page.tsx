@@ -3,7 +3,7 @@
 import { useTypedDispatch, useTypedSelector } from "@/store/store";
 import { useEffect, useState } from "react";
 import { Watch } from "react-loader-spinner";
-import { fetchSchedule } from "./actions/schedule";
+import { fetchSchedule } from "../actions/schedule";
 import { ScheduleList } from "./schedule/scheduleList";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";

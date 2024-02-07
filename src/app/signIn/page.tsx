@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useTypedDispatch, useTypedSelector } from "@/store/store";
-import { login } from "../actions/auth";
+import { login } from "../../actions/auth";
 import { SignInInput } from "@/utils/types";
 import { useRouter } from "next/navigation";
 import { Watch } from "react-loader-spinner";

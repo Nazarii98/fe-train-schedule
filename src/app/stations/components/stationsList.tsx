@@ -1,12 +1,19 @@
-import { Station } from "@/utils/types";
-import { FC } from "react";
+"use client";
+
+import { FC, useEffect } from "react";
 import { StationsItem } from "./stationsItem";
+import { useTypedDispatch, useTypedSelector } from "@/store/store";
+import { fetchStations } from "@/actions/stations";
+import { Watch } from "react-loader-spinner";
 
-interface Stations {
-  stations: Station[];
-}
+export const StationsList: FC = () => {
+  const stations = useTypedSelector((state) => state.stations);
+  const dispatch = useTypedDispatch();
 
-export const StationsList: FC<Stations> = ({ stations }) => {
+  useEffect(() => {
+    dispatch(fetchStations());
+  }, [dispatch]);
+
   return (
     <div>
       <div className="sticky top-0 grid grid-flow-col grid-cols-9 border-b-2 px-20 bg-gray-800">
@@ -18,9 +25,22 @@ export const StationsList: FC<Stations> = ({ stations }) => {
           Number of platform
         </div>
       </div>
-      {stations.map((station, index) => {
-        return <StationsItem key={index} station={station} />;
-      })}
+      {stations.isLoading || !stations.stations ? (
+        <div className="m-auto">
+          <Watch
+            visible={true}
+            height="100%"
+            width="160"
+            radius="48"
+            color="#c74822"
+            ariaLabel="watch-loading"
+          />
+        </div>
+      ) : (
+        stations.stations.map((station, index) => {
+          return <StationsItem key={index} station={station} />;
+        })
+      )}
     </div>
   );
 };

@@ -35,8 +35,8 @@ export default function Home() {
   }, [dispatch, orderDirection, searchValue, page, searchField, orderField]);
 
   useEffect(() => {
-    dispatch(fetchStations({}));
-    dispatch(fetchTrains({}));
+    dispatch(fetchStations());
+    dispatch(fetchTrains());
   }, [dispatch]);
 
   const handleSetSortBy = (value: string) => {
